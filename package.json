@@ -1,0 +1,33 @@
+{
+  "name": "w9_backend-project-the-4-thinkers",
+  "version": "1.0.0",
+  "description": "For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev":"nodemon -r dotenv/config",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:createTable": "node -r dotenv/config ./db/scripts/createTable.js",
+    "db:populateTable": "node -r dotenv/config ./db/scripts/populateTable.js",
+    "db:dropTable": "node -r dotenv/config ./db/scripts/dropTable.js",
+    "db:resetTable": "node -r dotenv/config ./db/scripts/dropTable.js && node -r dotenv/config ./db/scripts/createTable.js && node -r dotenv/config ./db/scripts/populateTable.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SchoolOfCode/w9_backend-project-the-4-thinkers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SchoolOfCode/w9_backend-project-the-4-thinkers/issues"
+  },
+  "homepage": "https://github.com/SchoolOfCode/w9_backend-project-the-4-thinkers#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
