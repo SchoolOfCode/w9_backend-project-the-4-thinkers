@@ -1,6 +1,6 @@
 import express from "express";
-import { getAllComments } from "../models/comments";
-const router = express.Router()
+import { getAllComments } from "../models/comments.js";
+const commentsRouter = express.Router()
 
 
 router.get("/1", function(req, res){
@@ -12,6 +12,6 @@ router.get("/1", function(req, res){
     res.json(responseObject)
 })
 
-export default router
+export default commentsRouter
 
 //maybe async it
