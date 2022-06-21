@@ -4,23 +4,24 @@ const commentsRouter = express.Router()
 
 
 commentsRouter.get("/1", async function(req, res){
+    let data = await getAllComments()
     const responseObject = {
         success:true,
         message:"reached page 1",
-        payload: await getAllComments(),
+        payload:data,
     };
     console.log(responseObject);
     res.json(responseObject);
 })
 commentsRouter.post("/1", async function(req, res){
-    console.log(req)
     let newComment = req.body;
+    let data = await createComment(newComment)
     const responseObject = {
         success:true,
         message:"reached page 1",
-        payload: await createComment(newComment),
+        payload:data,
     };
-    console.log(responseObject);
+    //console.log(responseObject);
     res.json(responseObject);
 })
 
