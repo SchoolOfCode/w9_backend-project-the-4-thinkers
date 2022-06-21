@@ -3,7 +3,7 @@ import { getAllComments } from "../models/comments.js";
 const commentsRouter = express.Router()
 
 
-router.get("/1", function(req, res){
+commentsRouter.get("/1", function(req, res){
     const responseObject = {
         success:true,
         message:"reached page 1",
