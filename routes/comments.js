@@ -3,15 +3,16 @@ import { getAllComments } from "../models/comments.js";
 const commentsRouter = express.Router()
 
 
-commentsRouter.get("/1", function(req, res){
+commentsRouter.get("/1", async function(req, res){
     const responseObject = {
         success:true,
         message:"reached page 1",
-        data: getAllComments(),
+        payload: await getAllComments(),
     };
-    res.json(responseObject)
+    console.log(responseObject);
+    res.json(responseObject);
 })
 
-export default commentsRouter
+export default commentsRouter;
 
 //maybe async it
