@@ -5,13 +5,13 @@ const commentsRouter = express.Router()
 
 commentsRouter.get("/1", async function(req, res){
     let data = await getAllComments()
-    const responseObject = {
+    /* const responseObject = {
         success:true,
         message:"reached page 1",
         payload:data,
     };
-    console.log(responseObject);
-    res.json(responseObject);
+    console.log(responseObject); */
+    res.json(data);
 })
 commentsRouter.post("/1", async function(req, res){
     let newComment = req.body;
