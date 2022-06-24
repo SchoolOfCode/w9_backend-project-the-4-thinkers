@@ -11,7 +11,7 @@ let testcomments = [
     },
     {
         user_id: 3, 
-        comment_text: "sure",
+        comment_text: "How do you write a function ?",
         page_id: 1,
     },
 ]
