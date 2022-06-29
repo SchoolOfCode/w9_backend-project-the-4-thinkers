@@ -252,6 +252,7 @@ test("Check that the array returned has the correct object items", async functio
         );
     });
 ```
+### Description:
 This test checks the functionality of the GET request, ensuring that a GET request to __localhost:3000/page/1__ returns an array of comment objects, with correct key-value pairs.
 
 <br>
@@ -277,6 +278,7 @@ test("Check that the comment_text has a string", async function createComment ()
         });
 }); 
 ```
+### Description:
 This test checks the functionality of the POST request, ensuring that a POST request to __localhost:3000/page/1__ returns a comment object, with correct key-value pairs, including the _comment_text_ key which has the value of the submitted comment.
 
 <br>
@@ -304,4 +306,5 @@ describe("DELETE comment with specific ID", function () {
     });
 });
 ```
+### Description:
 These tests check the functionality of the DELETE request, ensuring that a DELETE request to __localhost:3000/page/1__ returns a response object showing that the delete request was sucessfully received, and that selecting the comment with the commentId that was deleted returns an empty array (since that comment object no longer exists).
