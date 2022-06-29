@@ -254,6 +254,8 @@ test("Check that the array returned has the correct object items", async functio
 ```
 This test checks the functionality of the GET request, ensuring that a GET request to __localhost:3000/page/1__ returns an array of comment objects, with correct key-value pairs.
 
+<br>
+
 ## POST request test:
 ```js
 test("Check that the comment_text has a string", async function createComment (){
@@ -276,6 +278,9 @@ test("Check that the comment_text has a string", async function createComment ()
 }); 
 ```
 This test checks the functionality of the POST request, ensuring that a POST request to __localhost:3000/page/1__ returns a comment object, with correct key-value pairs, including the _comment_text_ key which has the value of the submitted comment.
+
+<br>
+
 
 ## DELETE request test:
 ```js
