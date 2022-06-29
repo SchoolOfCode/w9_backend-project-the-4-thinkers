@@ -229,3 +229,74 @@ When called, this function deletes the selected comment from the database table.
 _comment_id_ - The unique id corresponding to the comment to be deleted.
 ### Returns: 
 A payload that confirms the deletion of the corresponding entry. 
+
+
+# Tests:
+
+## GET request test:
+```js
+test("Check that the array returned has the correct object items", async function getAllComments() {
+        await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+        const response = await request(app)
+            .get("/page/1")
+            .set("Accept", "application/json");
+        expect(response.body).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    comments_id: expect.any(Number),
+                    user_id: expect.any(Number),
+                    comment_text: expect.any(String),
+                    page_id: expect.any(Number),
+                }),
+            ])
+        );
+    });
+```
+This test checks the functionality of the GET request, ensuring that a GET request to __localhost:3000/page/1__ returns an array of comment objects, with correct key-value pairs.
+
+## POST request test:
+```js
+test("Check that the comment_text has a string", async function createComment (){
+        await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+        const testUserId = 27;
+        const testCommentText = "This is a comment.";
+        const response = await request(app)
+            .post("/page/1")
+            .set("Accept", "application/json")
+            .send({
+                comment_text: testCommentText,
+                user_id: testUserId
+            })
+        expect(response.body.payload.rows[0]).toMatchObject({
+            comments_id: expect.any(Number),
+            user_id: testUserId,
+            comment_text: testCommentText,
+            page_id: expect.any(Number)
+        });
+}); 
+```
+This test checks the functionality of the POST request, ensuring that a POST request to __localhost:3000/page/1__ returns a comment object, with correct key-value pairs, including the _comment_text_ key which has the value of the submitted comment.
+
+## DELETE request test:
+```js
+describe("DELETE comment with specific ID", function () {
+    test("Check whether a comment is deleted at all", async function () {
+        await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+        const response = await request(app)
+            .delete("/page/1")
+            .set("Accept", "application/json")
+            .send({commentId:20});
+        expect(response.statusCode).toBe(200);
+        expect(response.body.payload.command).toBe("DELETE");
+    });
+    test("Check whether an empty array is returned when deleting", async function () {
+        await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+        const response = await request(app)
+            .delete("/page/1")
+            .set("Accept", "application/json")
+            .send({commentId:20});
+        expect(response.body.payload.rows).toStrictEqual([]);
+    });
+});
+```
+These tests check the functionality of the DELETE request, ensuring that a DELETE request to __localhost:3000/page/1__ returns a response object showing that the delete request was sucessfully received, and that selecting the comment with the commentId that was deleted returns an empty array (since that comment object no longer exists).
